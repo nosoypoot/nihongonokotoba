@@ -1,36 +1,36 @@
 # Nihongo no Kotoba
 
-Aplicación offline para practicar vocabulario con repetición espaciada y
-comprensión contextual. La primera experiencia enseña japonés; el formato de
-contenido está diseñado para admitir otros idiomas sin cambiar el motor.
+An offline vocabulary app built around spaced repetition and contextual
+understanding. The first course teaches Japanese, but the content format is
+language-neutral, so adding another language does not require changing the engine.
 
-Funciona en Android, iOS y navegador, y sigue funcionando sin conexión después de
-instalarse.
+Runs on Android, iOS, and the browser, and keeps working with no network once
+installed. The interface itself is in Spanish.
 
-## Principios
+## Principles
 
-- Funciona sin internet después de instalarse.
-- No usa puntos, rachas ni recompensas.
-- La palabra, su estructura y su uso son el centro de la experiencia.
-- El progreso vive separado del contenido para que actualizar un curso no borre
-  el historial.
-- Los paquetes no afirman afiliación con libros o cursos comerciales.
+- Works without internet after installation.
+- No points, streaks, or synthetic rewards.
+- The word, its structure, and its usage are the center of the experience.
+- Progress is stored separately from content, so updating a course never erases
+  learning history.
+- Packs never claim affiliation with commercial books or courses.
 
-## Cómo funciona el estudio
+## How studying works
 
-Una práctica enfocada toma primero las tarjetas que ya toca repasar y luego
-introduce hasta cinco palabras nuevas de una sola lección. La persona revela la
-respuesta y la califica: `Recordé`, `No recordé` o `Recordé mal`. Solo la
-confirmación después del reveal cambia la programación de FSRS, pero las dos
-señales quedan guardadas en un historial de intentos que nunca se sobrescribe.
+A focused practice draws due cards first, then introduces at most five unseen
+words from a single lesson. The learner reveals the answer and self-rates it:
+`Recordé`, `No recordé`, or `Recordé mal` (remembered, forgot, misremembered).
+Only the post-reveal confirmation changes the FSRS schedule, but both signals are
+kept in an append-only attempt history.
 
-Una palabra olvidada vuelve a aparecer después de dos tarjetas. FSRS se encarga
-del calendario largo, con 90% de retención deseada. Tres prácticas enfocadas hacen
-que una lección entre al repaso acumulativo.
+A forgotten word returns after two intervening cards. FSRS owns the longer-term
+schedule with 90% desired retention. Three completed focused practices make a
+lesson eligible for cumulative review.
 
-## Desarrollo
+## Development
 
-Requisitos: Node.js 20 o superior y Expo Go para probar en un teléfono.
+Requires Node.js 20 or newer, plus Expo Go to test on a phone.
 
 ```bash
 npm install
@@ -39,11 +39,11 @@ npm test
 npm start
 ```
 
-Escanea el QR con Expo Go en Android. En macOS también puedes ejecutar
-`npm run ios` para abrir el simulador de iPhone aunque no tengas un iPhone físico,
-o `npm run web` para la versión de navegador.
+Scan the QR code with Expo Go on Android. On macOS you can also run `npm run ios`
+to open the iPhone simulator without owning a physical iPhone, or `npm run web`
+for the browser build.
 
-Verificaciones completas:
+Full checks:
 
 ```bash
 npm run validate:content
@@ -52,54 +52,54 @@ npm run typecheck
 npm test
 ```
 
-## Estructura
+## Structure
 
 ```text
-app/           pantallas de Expo Router
-src/features/  flujos de usuario y hooks
-src/ui/        componentes y tokens visuales
-src/data/      almacenamiento por plataforma y repositorios
-src/core/      contratos de contenido, adaptador FSRS y estado puro de sesión
-content/       paquetes de contenido incluidos en el build
-tools/         validación de paquetes
+app/           Expo Router screens
+src/features/  user flows and hooks
+src/ui/        components and visual tokens
+src/data/      per-platform storage and repositories
+src/core/      content contracts, FSRS adapter, pure session state
+content/       content packs bundled at build time
+tools/         pack validation
 ```
 
-Las dependencias fluyen `app → features → data → core`, y el linter lo hace
-cumplir. `src/core` es lógica pura: no importa React Native, Expo ni SQLite.
+Dependencies flow `app → features → data → core`, and the linter enforces it.
+`src/core` is pure logic: it does not import React Native, Expo, or SQLite.
 
-En Android e iOS el almacenamiento usa Expo SQLite, con `content.db` desechable y
-`progress.db` duradero. En web usa IndexedDB a través de `idb` con los mismos
-contratos de repositorio.
+Android and iOS store data in Expo SQLite, with a disposable `content.db` and a
+durable `progress.db`. The web build uses IndexedDB through `idb` behind the same
+repository contracts.
 
-## Despliegue web
+## Web deployment
 
 ```bash
-export CLOUDFLARE_ACCOUNT_ID=<tu-account-id>
+export CLOUDFLARE_ACCOUNT_ID=<your-account-id>
 npm run deploy:web
 ```
 
-`npm run build:web` genera solo el bundle estático en `dist/`.
+`npm run build:web` produces only the static bundle in `dist/`.
 
-## Contenido
+## Content
 
-Cada paquete declara autoría, licencia, notas de origen, significados en español e
-inglés, e IDs estables. El paquete de japonés básico y el fixture de maya yucateco
-están bajo CC0-1.0; las notas de estudio de japonés están bajo CC-BY-4.0. Revisa la
-licencia declarada dentro de cada paquete antes de reutilizar contenido.
+Every pack declares authorship, license, source notes, Spanish and English
+meanings, and stable IDs. The basic Japanese pack and the Yucatec Maya fixture are
+CC0-1.0; the Japanese study notes are CC-BY-4.0. Check the license declared inside
+a pack before reusing its content.
 
-El paquete de maya yucateco existe solo para demostrar que el núcleo no está atado
-al japonés. No es un curso publicable.
+The Yucatec Maya pack exists only to prove the core is not tied to Japanese. It is
+a schema fixture, not a publishable course.
 
-## Documentación
+## Documentation
 
-- `CONTRIBUTING.md` — cómo contribuir código y contenido
-- `DESIGN.md` — sistema de diseño y decisiones visuales
-- `docs/architecture.md` — capas, almacenamiento e identidad de tarjetas
-- `docs/content-sources.md` — reglas de procedencia y publicación de contenido
-- `docs/roadmap.md` — qué está hecho y qué sigue
-- `docs/security.md` — postura de dependencias y datos
+- `CONTRIBUTING.md` — how to contribute code and content
+- `DESIGN.md` — design system and visual decisions
+- `docs/architecture.md` — layers, storage, and card identity
+- `docs/content-sources.md` — content provenance and publishing rules
+- `docs/roadmap.md` — what is done and what comes next
+- `docs/security.md` — dependency and data posture
 
-## Licencia
+## License
 
-Código bajo licencia MIT (ver `LICENSE`). El contenido usa la licencia declarada
-en cada paquete.
+Code is MIT licensed (see `LICENSE`). Content uses the license declared in each
+pack.

@@ -1,13 +1,16 @@
-# Cómo contribuir
+# Contributing
 
-Gracias por tu interés. Este proyecto es una aplicación de estudio de vocabulario
-que funciona sin conexión. Antes de escribir código, lee `AGENTS.md`, `DESIGN.md`
-y `docs/architecture.md`: describen límites que el linter hace cumplir y no son
-sugerencias.
+Thanks for your interest. This is a vocabulary study app that works without a
+network connection. Before writing code, read `AGENTS.md`, `DESIGN.md`, and
+`docs/architecture.md` — they describe boundaries the linter enforces, not
+suggestions.
 
-## Preparar el entorno
+Note that the application interface is written in Spanish. Code, comments, and
+documentation are in English; user-facing strings and content packs are not.
 
-Requisitos: Node.js 20 o superior. Para probar en un teléfono, Expo Go.
+## Setting up
+
+Requires Node.js 20 or newer. To test on a phone, install Expo Go.
 
 ```bash
 git clone https://github.com/nosoypoot/nihongonokotoba.git
@@ -16,107 +19,104 @@ npm install
 npm start
 ```
 
-Escanea el QR con Expo Go para Android. En macOS, `npm run ios` abre el simulador
-de iPhone. `npm run web` levanta la versión de navegador.
+Scan the QR code with Expo Go on Android. On macOS, `npm run ios` opens the iPhone
+simulator. `npm run web` starts the browser build.
 
-## Antes de abrir un pull request
+## Before opening a pull request
 
-Corre las cuatro verificaciones. Todas deben pasar:
+Run all four checks. Every one must pass:
 
 ```bash
-npm run validate:content   # valida el esquema de los paquetes de contenido
-npm run lint               # incluye las reglas de límites entre capas
+npm run validate:content   # validates the content pack schema
+npm run lint               # includes the layer boundary rules
 npm run typecheck
 npm test
 ```
 
-## Reglas de arquitectura
+## Architecture rules
 
-Las dependencias fluyen en una sola dirección:
+Dependencies flow in one direction only:
 
 ```text
 app → features → data → core
 ```
 
-- `src/core/` no puede importar React Native, Expo ni SQLite. Es lógica pura.
-- Solo `src/data/` puede importar `expo-sqlite`.
-- Solo `src/core/scheduling/` puede importar `ts-fsrs`.
-- Las pantallas de `app/` componen features; no contienen SQL ni reglas de
-  programación de repasos.
-- La aplicación debe seguir siendo completamente usable sin red.
+- `src/core/` must not import React Native, Expo, or SQLite. It is pure logic.
+- Only `src/data/` may import `expo-sqlite`.
+- Only `src/core/scheduling/` may import `ts-fsrs`.
+- Screens in `app/` compose features; they contain no SQL and no scheduling rules.
+- The application must remain fully usable without network access.
 
-`eslint-plugin-boundaries` verifica esto, así que un PR que rompa una capa falla
-en `npm run lint` antes de la revisión.
+`eslint-plugin-boundaries` verifies this, so a pull request that crosses a layer
+fails `npm run lint` before review.
 
-## Contribuir contenido
+## Contributing content
 
-Un paquete de contenido es la parte del proyecto con más requisitos legales,
-porque es material educativo publicado. Cada paquete debe declarar:
+Content packs carry the most requirements, because they are published educational
+material. Every pack must declare:
 
-- `authors`, `license` (nombre y URL) y `sourceNotes` verificables.
-- Significados en español **y** en inglés.
-- IDs estables. Un ID de tarjeta es `courseId:entryId:templateId:senseId`.
+- `authors`, `license` (name and URL), and verifiable `sourceNotes`.
+- Meanings in Spanish **and** English.
+- Stable IDs. A card ID is `courseId:entryId:templateId:senseId`.
 
-Además:
+In addition:
 
-- El contenido debe ser original, de dominio público o con licencia compatible.
-- No copies listas, traducciones ni explicaciones de libros o cursos comerciales.
-  Puedes usar material privado para definir el *alcance* de una lección, pero cada
-  traducción, explicación y ejemplo que llegue al repositorio debe escribirse y
-  revisarse de forma independiente.
-- Los metadatos no pueden dar a entender afiliación con ningún libro comercial.
-- No subas PDFs ni escaneos de material de estudio. `docs/References/` está
-  ignorado por Git a propósito.
+- Content must be original, public domain, or compatibly licensed.
+- Do not copy word lists, translations, or explanations from commercial books or
+  courses. Private material may define the *scope* of a lesson, but every
+  translation, explanation, and example committed here must be independently
+  written and reviewed.
+- Pack metadata must not imply affiliation with any commercial textbook.
+- Do not commit PDFs or scans of study material. `docs/References/` is gitignored
+  deliberately.
 
-Ver `docs/content-sources.md` para las reglas completas de publicación.
+See `docs/content-sources.md` for the full publishing rules.
 
-Cambiar la forma objetivo de una palabra, su sentido principal, la identidad de
-una lección o la identidad de una tarjeta rompe el historial de estudio de la
-gente. Eso requiere un mapa de migración, o un ID nuevo más una lápida
-(*tombstone*). Las correcciones de redacción puramente cosméticas conservan el
-progreso.
+Changing a word's target form, primary sense, lesson identity, or card identity
+breaks people's study history. That requires a migration map, or a new ID plus a
+tombstone. Purely cosmetic copy edits preserve progress.
 
-El paquete de maya yucateco es solo un fixture del esquema, no un curso. Solo se
-convertiría en curso con una persona calificada que revise ortografía, dialecto,
-ejemplos, traducciones y licencia.
+The Yucatec Maya pack is only a schema fixture, not a course. It would become a
+course only with a qualified contributor reviewing orthography, dialect, examples,
+translations, and license.
 
-## Diseño
+## Design
 
-`DESIGN.md` define tipografía, color, espaciado, movimiento y accesibilidad. Dos
-reglas que se rompen con facilidad:
+`DESIGN.md` defines typography, color, spacing, motion, and accessibility. Two
+rules that are easy to break:
 
-- Sin puntos, rachas ni recompensas sintéticas. La palabra es el premio.
-- Sin rojo ni lenguaje de vergüenza para una respuesta olvidada, y nunca uses el
-  color como único medio para comunicar un resultado.
+- No points, streaks, or synthetic rewards. The word is the reward.
+- No red and no shame language for a forgotten answer, and never use color as the
+  only way to communicate an outcome.
 
-Objetivo de accesibilidad: WCAG AA (4.5:1 en texto normal, 3:1 en texto grande),
-áreas táctiles de 44 × 44 dp como mínimo, y ninguna acción obligatoria que dependa
-de un deslizamiento, un hover, una pulsación larga o la orientación.
+Accessibility target: WCAG AA (4.5:1 for normal text, 3:1 for large text), touch
+targets of at least 44 × 44 dp, and no required action that depends on a swipe,
+hover, long press, or device orientation.
 
-## Despliegue web
+## Web deployment
 
-El despliegue usa Cloudflare Workers. El identificador de cuenta no vive en el
-repositorio; expórtalo antes de desplegar:
+Deployment uses Cloudflare Workers. The account identifier is intentionally not
+committed, so export it before deploying:
 
 ```bash
-export CLOUDFLARE_ACCOUNT_ID=<tu-account-id>
+export CLOUDFLARE_ACCOUNT_ID=<your-account-id>
 npm run deploy:web
 ```
 
-Si solo quieres el bundle estático, `npm run build:web` deja la salida en `dist/`.
+For the static bundle alone, `npm run build:web` writes output to `dist/`.
 
 ## Pull requests
 
-- Una preocupación por PR, con un título que describa el cambio.
-- Explica el *por qué*, no solo el *qué*, sobre todo si tocas programación de
-  repasos, identidad de tarjetas o almacenamiento.
-- Agrega pruebas para lógica nueva en `src/core/` y para repositorios nuevos.
-- No subas secretos, `.env`, claves de firma ni credenciales de cuenta. `.gitignore`
-  cubre los casos comunes, pero revisa tu diff.
+- One concern per pull request, with a title that describes the change.
+- Explain the *why*, not only the *what*, especially for changes to scheduling,
+  card identity, or storage.
+- Add tests for new logic in `src/core/` and for new repositories.
+- Never commit secrets, `.env` files, signing keys, or account credentials.
+  `.gitignore` covers the common cases, but review your diff.
 
-## Licencia
+## License
 
-El código se contribuye bajo la licencia MIT (ver `LICENSE`). El contenido se
-publica bajo la licencia declarada en cada paquete: CC0-1.0 o CC-BY-4.0 según el
-paquete. Al enviar un PR confirmas que tienes derecho a aportar ese material bajo
-esas licencias.
+Code is contributed under the MIT license (see `LICENSE`). Content is published
+under the license declared in each pack: CC0-1.0 or CC-BY-4.0 depending on the
+pack. By submitting a pull request you confirm you have the right to contribute
+that material under those licenses.
