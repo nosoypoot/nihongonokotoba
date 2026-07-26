@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "0.1.0",
+  "packId": "yucatec-maya-fixture",
+  "courseId": "yua-fixture",
+  "languageTag": "yua",
+  "title": {
+    "es": "Fixture de maya yucateco",
+    "en": "Yucatec Maya fixture"
+  },
+  "description": {
+    "es": "Paquete mínimo para probar que el formato no depende del japonés.",
+    "en": "Minimal pack proving that the format does not depend on Japanese."
+  },
+  "authors": [
+    "Nihongo no Kotoba contributors"
+  ],
+  "license": {
+    "name": "CC0-1.0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "sourceNotes": [
+    "Fixture técnico, no curso publicable.",
+    "La forma ja’ y su significado se verificaron en el Diccionario Maya de la Universidad Autónoma de Yucatán: https://www.mayas.uady.mx/diccionario/j_maya.html"
+  ],
+  "lessons": [
+    {
+      "id": "fixture-01",
+      "order": 1,
+      "title": {
+        "es": "Fixture léxico",
+        "en": "Lexical fixture"
+      },
+      "description": {
+        "es": "Una entrada para validar caracteres glotalizados y contenido sin kanji.",
+        "en": "One entry validating glottalized characters and content without kanji."
+      }
+    }
+  ],
+  "entries": [
+    {
+      "id": "ja-water",
+      "lessonId": "fixture-01",
+      "target": "ja’",
+      "partOfSpeech": {
+        "es": "sustantivo",
+        "en": "noun"
+      },
+      "senses": [
+        {
+          "id": "water",
+          "meanings": {
+            "es": "agua",
+            "en": "water"
+          },
+          "explanation": {
+            "es": "La marca final representa una vocal glotalizada; no es un apóstrofo decorativo.",
+            "en": "The final mark represents a glottalized vowel; it is not decorative punctuation."
+          },
+          "structure": [],
+          "examples": [
+            {
+              "id": "ja-lexical",
+              "target": "Ja’.",
+              "translations": {
+                "es": "Agua.",
+                "en": "Water."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

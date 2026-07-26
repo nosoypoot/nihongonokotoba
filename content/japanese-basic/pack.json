@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "0.4.0",
+  "packId": "japanese-basic",
+  "courseId": "ja-basic",
+  "languageTag": "ja",
+  "title": {
+    "es": "Japonés básico",
+    "en": "Basic Japanese"
+  },
+  "description": {
+    "es": "Vocabulario inicial organizado por lecciones independientes.",
+    "en": "Starter vocabulary organized into independent lessons."
+  },
+  "authors": [
+    "Nihongo no Kotoba contributors"
+  ],
+  "license": {
+    "name": "CC0-1.0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "sourceNotes": [
+    "Contenido original para demostrar el formato. No está afiliado a Minna no Nihongo ni reproduce sus listas."
+  ],
+  "lessons": [
+    {
+      "id": "lesson-06-actions",
+      "order": 1003,
+      "kind": "special",
+      "title": {
+        "es": "Acciones cotidianas",
+        "en": "Everyday actions"
+      },
+      "description": {
+        "es": "Cinco verbos frecuentes para hablar de la vida diaria.",
+        "en": "Five frequent verbs for everyday life."
+      }
+    }
+  ],
+  "entries": [
+    {
+      "id": "taberu",
+      "lessonId": "lesson-06-actions",
+      "target": "食べる",
+      "reading": "たべる",
+      "partOfSpeech": {
+        "es": "verbo",
+        "en": "verb"
+      },
+      "senses": [
+        {
+          "id": "eat",
+          "meanings": {
+            "es": "comer",
+            "en": "to eat"
+          },
+          "explanation": {
+            "es": "食 aporta la idea de comida o comer. べる completa esta forma del verbo.",
+            "en": "食 carries the idea of food or eating. べる completes this verb form."
+          },
+          "structure": [
+            {
+              "form": "食",
+              "reading": "しょく・た",
+              "meanings": {
+                "es": "comida; comer",
+                "en": "food; eat"
+              }
+            },
+            {
+              "form": "べる",
+              "meanings": {
+                "es": "terminación verbal",
+                "en": "verb ending"
+              }
+            }
+          ],
+          "examples": [
+            {
+              "id": "taberu-breakfast",
+              "target": "毎朝、パンを食べます。",
+              "reading": "まいあさ、パンをたべます。",
+              "translations": {
+                "es": "Cada mañana como pan.",
+                "en": "I eat bread every morning."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nomu",
+      "lessonId": "lesson-06-actions",
+      "target": "飲む",
+      "reading": "のむ",
+      "partOfSpeech": {
+        "es": "verbo",
+        "en": "verb"
+      },
+      "senses": [
+        {
+          "id": "drink",
+          "meanings": {
+            "es": "beber",
+            "en": "to drink"
+          },
+          "explanation": {
+            "es": "飲 expresa beber. También aparece en palabras relacionadas con bebidas.",
+            "en": "飲 expresses drinking. It also appears in words connected with beverages."
+          },
+          "structure": [
+            {
+              "form": "飲",
+              "reading": "いん・の",
+              "meanings": {
+                "es": "beber",
+                "en": "drink"
+              }
+            },
+            {
+              "form": "む",
+              "meanings": {
+                "es": "terminación verbal",
+                "en": "verb ending"
+              }
+            }
+          ],
+          "examples": [
+            {
+              "id": "nomu-water",
+              "target": "水を飲みます。",
+              "reading": "みずをのみます。",
+              "translations": {
+                "es": "Bebo agua.",
+                "en": "I drink water."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "miru",
+      "lessonId": "lesson-06-actions",
+      "target": "見る",
+      "reading": "みる",
+      "partOfSpeech": {
+        "es": "verbo",
+        "en": "verb"
+      },
+      "senses": [
+        {
+          "id": "see",
+          "meanings": {
+            "es": "ver; mirar",
+            "en": "to see; to watch"
+          },
+          "explanation": {
+            "es": "見 reúne ideas de ver, observar o encontrarse con algo visible.",
+            "en": "見 gathers the ideas of seeing, watching, or encountering something visible."
+          },
+          "structure": [
+            {
+              "form": "見",
+              "reading": "けん・み",
+              "meanings": {
+                "es": "ver",
+                "en": "see"
+              }
+            },
+            {
+              "form": "る",
+              "meanings": {
+                "es": "terminación verbal",
+                "en": "verb ending"
+              }
+            }
+          ],
+          "examples": [
+            {
+              "id": "miru-movie",
+              "target": "映画を見ます。",
+              "reading": "えいがをみます。",
+              "translations": {
+                "es": "Veo una película.",
+                "en": "I watch a movie."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iku",
+      "lessonId": "lesson-06-actions",
+      "target": "行く",
+      "reading": "いく",
+      "partOfSpeech": {
+        "es": "verbo",
+        "en": "verb"
+      },
+      "senses": [
+        {
+          "id": "go",
+          "meanings": {
+            "es": "ir",
+            "en": "to go"
+          },
+          "explanation": {
+            "es": "行 comunica movimiento o desplazamiento hacia otro lugar.",
+            "en": "行 communicates movement or travel toward another place."
+          },
+          "structure": [
+            {
+              "form": "行",
+              "reading": "こう・い",
+              "meanings": {
+                "es": "ir; desplazarse",
+                "en": "go; travel"
+              }
+            },
+            {
+              "form": "く",
+              "meanings": {
+                "es": "terminación verbal",
+                "en": "verb ending"
+              }
+            }
+          ],
+          "examples": [
+            {
+              "id": "iku-school",
+              "target": "学校へ行きます。",
+              "reading": "がっこうへいきます。",
+              "translations": {
+                "es": "Voy a la escuela.",
+                "en": "I go to school."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kuru",
+      "lessonId": "lesson-06-actions",
+      "target": "来る",
+      "reading": "くる",
+      "partOfSpeech": {
+        "es": "verbo",
+        "en": "verb"
+      },
+      "senses": [
+        {
+          "id": "come",
+          "meanings": {
+            "es": "venir",
+            "en": "to come"
+          },
+          "explanation": {
+            "es": "来 señala llegada hacia el lugar desde el que se habla.",
+            "en": "来 points to arrival toward the place from which someone speaks."
+          },
+          "structure": [
+            {
+              "form": "来",
+              "reading": "らい・く",
+              "meanings": {
+                "es": "venir; llegar",
+                "en": "come; arrive"
+              }
+            },
+            {
+              "form": "る",
+              "meanings": {
+                "es": "terminación verbal",
+                "en": "verb ending"
+              }
+            }
+          ],
+          "examples": [
+            {
+              "id": "kuru-tomorrow",
+              "target": "友だちは明日来ます。",
+              "reading": "ともだちはあしたきます。",
+              "translations": {
+                "es": "Mi amigo viene mañana.",
+                "en": "My friend is coming tomorrow."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
